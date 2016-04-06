@@ -33,7 +33,7 @@ module.exports = function createLintFunction(userOpts) {
   }
 
   var jshintrc = userOpts.lookup;
-  if (jshintrc === true) jshintrc = '.jshintrc';
+  if (jshintrc === true || !jshintrc) jshintrc = '.jshintrc';
   
   var rcLoader = new RcLoader(jshintrc, userOpts, {
     loader: function (path) {
