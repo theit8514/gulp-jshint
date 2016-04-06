@@ -32,10 +32,8 @@ module.exports = function createLintFunction(userOpts) {
     delete userOpts.linter;
   }
 
-  var jshintrc = userOpts.lookup;
-  if (jshintrc === true || !jshintrc) jshintrc = '.jshintrc';
-  
-  var rcLoader = new RcLoader(jshintrc, userOpts, {
+  userOpts.jshintrc = userOpts.jshintrc || '.jshintrc';
+  var rcLoader = new RcLoader(userOpts.jshintrc, userOpts, {
     loader: function (path) {
       var cfg = jshintcli.loadConfig(path);
       delete cfg.dirname;
